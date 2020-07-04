@@ -21,7 +21,6 @@ public class Categoria implements Serializable{
 	
 	
 
-
 	public int getIdcategoria() {
 		return idcategoria;
 	}

@@ -11,4 +11,8 @@ public class InicioController {
 	public String noEncontrado(Model model) {
 		return "error404";
 	}
+	@GetMapping("/")
+	public String inicio() {
+		return "inicio";
+	}
 }

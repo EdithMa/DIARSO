@@ -55,7 +55,7 @@
 						<label>Categoria  </label> 
 							<select class="browser-default custom-select col-md-4"
 								th:field="*{categoria}">
-								<option value="10" th:text="'No Categorizado'"></option>
+								<option value="" th:text="'No Categorizado'"></option>
 								<option th:each="cat :${categoria}"
 									th:value="${cat.idcategoria}" th:text="${cat.nombre}" th:if="${cat.idcategoria != 10}" />
 								<small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></small>

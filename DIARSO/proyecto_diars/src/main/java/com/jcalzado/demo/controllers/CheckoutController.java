@@ -92,8 +92,8 @@ public class CheckoutController {
 						u.setCorreo(p.getEmail());
 						u.setPassword(Functions.encodingPassword(part[0]));
 						u.setDireccion(e.getDireccion1());
-						u.setRol(rol.get());
-						Serializable nusu = usuarioServ.save(u);
+						//u.setRol(rol.get());
+						Serializable nusu = usuarioServ.registrar(u);
 						if(nusu != null) {
 							idUsu = u.getIdusuario();
 							setUsu = u;

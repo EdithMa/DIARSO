@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -140,26 +141,13 @@ public class ProductosController {
 		return "redirect:/lproducto";
 	}
 
-	@GetMapping("/validar") 
-	public String validar(@RequestParam String correo,String password, Model model) {
-		
-		boolean val=usuarioservice.va(correo, password);
-		if(val==true) {
-			model.addAttribute("usuario","holaaaaaaaaaaa");
-			List<Producto> productos = productoService.listarpro();
-			model.addAttribute("producto", new Producto());
-			model.addAttribute("productos", productos);
-			return "catalago";
-		}else {
-			return "redirect:/login";
-		}
-	}
 	
 	@GetMapping("/catalogo")
 	public String listarcatalogo(Model model) {
 		List<Producto> productos = productoService.listarpro();
 		model.addAttribute("producto", new Producto());
 		model.addAttribute("productos", productos);
+		//model.addAttribute("usuario",usuarioservice.)
 		return "catalago";
 	}
 	
@@ -193,32 +181,5 @@ public class ProductosController {
 		return "catalogopornombre";
 	}
 
-	/*@GetMapping("/")
-	public String index() {
-		return "index";
-	}*/
-
-	@GetMapping("/login")
-	public String index(Model model) {
-		model.addAttribute("usuario", new Usuario());
-		return "login";
-	}
-	
-	@GetMapping("/registrar")
-	public String registrar(Model model) {
-		model.addAttribute("usuario", new Usuario());
-		return "registrarcliente";
-	}
-	
-	@PostMapping("/registrar")
-	public String guardarcli(@Valid Usuario u,BindingResult result){
-		if(result.hasErrors()) {
-			return "registrarcliente";
-		}else {
-			usuarioservice.save(u);
-		}
-				
-		return "redirect:/login";
-	}
 
 }

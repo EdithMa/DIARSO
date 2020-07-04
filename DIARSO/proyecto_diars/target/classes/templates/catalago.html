@@ -14,7 +14,7 @@
 	<script th:src="@{/js/funciones.js}"></script>
 </head>
 <body>
-	<div th:replace= "header :: myheader"></div> 
+	<div th:replace= "header :: myheader"></div>
 	<div class="container">
 	  	<br>
 		<div class="row">
@@ -33,7 +33,9 @@
 							<h5 class="text-danger d-flex justify-content-center price" th:text="'S/.'+${producto.precio}"></h5>
 							<div class="buttons text-center">
 								<button class="btn btn-primary add-to-cart" type="button" th:data-product="${producto}">Agregar a carrito</button>
+								<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 								<a th:href="@{/carrito/}+${producto.idproducto}" class="btn btn-danger">Comprar</a>
+								</span>
 							</div>
 						</div>
 					</div>

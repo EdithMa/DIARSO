@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.jcalzado.demo.dao.UsuarioDao;
 import com.jcalzado.demo.model.Usuario;
@@ -15,16 +18,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
 	@Qualifier("usuariodao")
 	private UsuarioDao usuariodao;
-
-	@Override
-	public int save(Usuario u) {
-		int res=0;
-		Usuario usuario=usuariodao.save(u);
-		if(!usuario.equals(null)) {
-			res=1;
-		}
-		return res;
-	}
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Override
 	public int existeUsuario(String correo) {
@@ -77,6 +73,54 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public Optional<Usuario> buscarxid(int id) {
 		return usuariodao.findById(id);
+	}
+
+	@Override
+	public Usuario findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return usuariodao.findByUsername(username);
+	}
+
+	@Override
+	public Usuario registrar(Usuario u) {
+		
+		String encodePassword=bCryptPasswordEncoder.encode(u.getPassword());
+		u.setPassword(encodePassword);
+		return usuariodao.save(u);
+	}
+
+	private boolean isLoggedUserADMIN() {
+		//Obtener el usuario logeado
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		UserDetails loggedUser = null;
+		Object roles = null;
+
+		//Verificar que ese objeto traido de sesion es el usuario
+		if (principal instanceof UserDetails) {
+			loggedUser = (UserDetails) principal;
+
+			roles = loggedUser.getAuthorities().stream()
+					.filter(x -> "ROLE_ADMIN".equals(x.getAuthority())).findFirst()
+					.orElse(null); 
+		}
+		return roles != null ? true : false;
+	}
+	
+	public Usuario getLoggedUser() throws Exception {
+		//Obtener el usuario logeado
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		UserDetails loggedUser = null;
+
+		//Verificar que ese objeto traido de sesion es el usuario
+		if (principal instanceof UserDetails) {
+			loggedUser = (UserDetails) principal;
+		}
+		
+		Usuario myUser = usuariodao.findByUsername(loggedUser.getUsername());
+		
+		return myUser;
 	}
 	
 }
