@@ -8,6 +8,7 @@
 <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="modal-dialog text-center">
         <div class="col-sm-8 main-section">
             <div class="modal-content">
@@ -36,5 +37,41 @@
             </div>
         </div>
     </div>
+=======
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="col-sm-6 ">
+			<div class="card text-center" style="width: 40rem;">
+			<br>
+			<div> <h2 class="card-title text-center">Iniciar Sesión</h2>
+			</div>
+				<form th:action="@{/validar}" class="form-line" th:object="${usuario}" method="GET">
+					<div class="card-body">
+						<div class="form-row ">
+							<div class="col-md-6 mb-5">
+								<label>Email</label> <input type="text" th:field="*{correo}" class="form-control"
+								 placeholder="Email">
+							</div>
+							<div class="col-md-6 mb-5">
+								<label>Password</label> <input type="password" th:field="*{password}"
+									class="form-control" placeholder="Password">
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">Ingresar</button>	
+							<a th:href="@{/catalogo}" class="btn btn-success">Saltar Paso</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+	</div>
+>>>>>>> 48daefbdb423991504481e09dca72fefbcb097df
 </body>
 </html>
