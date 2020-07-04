@@ -181,20 +181,5 @@ public class ProductosController {
 		return "catalogopornombre";
 	}
 
-<<<<<<< HEAD
-=======
-	/*@GetMapping("/")
-	public String index() {
-		return "index";
-	}*/
-
-	@GetMapping("/login")
-	public String index(Model model) {
-		model.addAttribute("usuario", new Usuario());
-		return "login";
-	}
-	
-	
->>>>>>> 48daefbdb423991504481e09dca72fefbcb097df
 
 }
