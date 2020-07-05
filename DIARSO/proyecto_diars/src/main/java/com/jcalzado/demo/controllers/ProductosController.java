@@ -177,7 +177,8 @@ public class ProductosController {
 	@GetMapping("/catalogon")
 	public String catalogopornombre(@RequestParam String nombre, Model model,
 			@ModelAttribute("producto") Producto producto) {
-		model.addAttribute("nombrepro", productoService.Buscarnombre(nombre));
+		model.addAttribute("producto", new Producto());
+		model.addAttribute("productos", productoService.Buscarnombre(nombre));
 		return "catalogopornombre";
 	}
 

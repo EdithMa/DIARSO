@@ -33,13 +33,9 @@
 							<h5 class="text-danger d-flex justify-content-center price" th:text="'S/.'+${producto.precio}"></h5>
 							<div class="buttons text-center">
 								<button class="btn btn-primary add-to-cart" type="button" th:data-product="${producto}">Agregar a carrito</button>
-<<<<<<< HEAD
 								<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 								<a th:href="@{/carrito/}+${producto.idproducto}" class="btn btn-danger">Comprar</a>
 								</span>
-=======
-								<a th:href="@{/carrito}+${producto.idproducto}" class="btn btn-danger">Comprar</a>
->>>>>>> 48daefbdb423991504481e09dca72fefbcb097df
 							</div>
 						</div>
 					</div>

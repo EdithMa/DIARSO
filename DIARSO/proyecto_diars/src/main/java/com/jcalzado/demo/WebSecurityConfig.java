@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	String[] resources = new String[]{
-            "/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**"
+            "/include/**","/css/**","/img/**","/js/**"
     };
 	
 	@Override
@@ -25,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers(resources).permitAll()
         .antMatchers("/registro").permitAll()
         .antMatchers("/catalogoa").permitAll()
-        .antMatchers("/","/index").permitAll()
+        .antMatchers("/").permitAll()
+        .antMatchers("/index").permitAll()
             .anyRequest().authenticated()
             .and()
         .formLogin()

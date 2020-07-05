@@ -31,7 +31,7 @@ public class LoginController {
 	@Qualifier("rolservice")
 	private RolService rolservice;
 
-	@GetMapping({"/","/login"})
+	@GetMapping("/login")
 	public String login(Model model) {
 		return "login";
 	}
