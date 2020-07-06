@@ -1,6 +1,8 @@
 package com.jcalzado.demo.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sun.istack.NotNull;
 
 @Entity
@@ -156,6 +163,7 @@ public class Pedido implements Serializable{
 		this.estado = estado;
 	}
 	
+
 	public String getFecha_creacion() {
 		return fecha_creacion;
 	}
@@ -163,7 +171,7 @@ public class Pedido implements Serializable{
 	public void setFecha_creacion(String fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

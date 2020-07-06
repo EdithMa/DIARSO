@@ -9,4 +9,5 @@ import com.jcalzado.demo.model.Producto;
 public interface Productodao extends JpaRepository<Producto, Integer> {
 	
 	List<Producto>findByNombre(String nombre);
+	List<Producto>OrderByCantidadDesc();
 }

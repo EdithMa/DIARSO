@@ -14,5 +14,7 @@ public interface ProductoService {
 	
 	//listar por nombre
 	public abstract List<Producto> Buscarnombre(String nombre);
+	
+	public List<Producto> ordenar();
 
 }

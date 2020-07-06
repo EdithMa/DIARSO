@@ -92,7 +92,7 @@ public class CheckoutController {
 						u.setCorreo(p.getEmail());
 						u.setPassword(Functions.encodingPassword(part[0]));
 						u.setDireccion(e.getDireccion1());
-						//u.setRol(rol.get());
+						//u.setRol();
 						Serializable nusu = usuarioServ.registrar(u);
 						if(nusu != null) {
 							idUsu = u.getIdusuario();
@@ -114,6 +114,7 @@ public class CheckoutController {
 				p.setCodigo(codigoPedido);
 				p.setUsuario(setUsu);
 				p.setEstado(true);
+				p.setFecha_creacion("06-07-20");
 				Serializable nped = pedidoServ.guardar(p);
 				if(nped != null) {
 					

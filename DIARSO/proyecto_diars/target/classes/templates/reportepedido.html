@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Reporte de Pedidos</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://use.fontawesome.com/your-embed-code.js"></script>
+<script type="text/javascript" th:src="@{/js/jquery.cookie.js}"></script>
+<script th:src="@{/js/funciones.js}"></script>	
+<body>
+<div th:replace= "header :: myheader"></div>
+<br>
+
+<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Codigo</th>
+					<th>Email</th>
+					<th>Total</th>
+					<th>Estado Pago</th>
+					<th>Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="col-md-10" th:each="ped:${pedidos}">
+					<td th:text="${ped.idpedido}"></td>
+					<td th:text="${ped.codigo}"></td>
+					<td th:text="${ped.email}"></td>
+					<td th:text="${ped.total_precio}"></td>
+					<td th:text="${ped.estado_pago}"></td>
+					<td th:text="${ped.usuario.idusuario}"></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+</body>
+</html>

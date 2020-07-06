@@ -51,6 +51,12 @@ public class ProductoServiceImpl implements ProductoService{
 		return productodao.findByNombre(nombre);
 	}
 
+	@Override
+	public List<Producto> ordenar() {
+		// TODO Auto-generated method stub
+		return productodao.OrderByCantidadDesc();
+	}
+
 
 
 

@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.jcalzado.demo.model.Pedido;
 import com.jcalzado.demo.model.Producto;
 import com.jcalzado.demo.model.Usuario;
 import com.jcalzado.demo.service.CategoriaService;
+import com.jcalzado.demo.service.PedidoService;
 import com.jcalzado.demo.service.ProductoService;
 import com.jcalzado.demo.service.UsuarioService;
 
@@ -40,6 +43,9 @@ public class ProductosController {
 	@Qualifier("usuarioservice")
 	private UsuarioService usuarioservice;
 
+	@Autowired
+	@Qualifier("pedidoservice")
+	private PedidoService pedidoServ;
 	
 	@GetMapping("/lproducto")
 	public String listar(Model model) {
@@ -182,5 +188,19 @@ public class ProductosController {
 		return "catalogopornombre";
 	}
 
+	@GetMapping("/reportepro")
+	public String reportep(Model model) {
+		List<Producto> p=productoService.ordenar();
+		model.addAttribute("producto", new Producto());
+		model.addAttribute("productos",p);
+		return "reportep"; 
+	}
+	@GetMapping("/reportepe")
+	public String reportepedidos(Model model) {
+		List<Pedido> p=pedidoServ.listar();
+		model.addAttribute("producto", new Producto());
+		model.addAttribute("pedidos",p);
+		return "reportepedido"; 
+	}
 
 }

@@ -22,7 +22,9 @@
 					class="d-inline-block align-top" alt="" loading="lazy"></a>
 					<span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a
-							class="dropdown-item" th:href="@{/lproducto}" >Lista de Prodcutos</a>
+							class="dropdown-item" th:href="@{/lproducto}" >Lista de Prodcutos</a><a
+							class="dropdown-item" th:href="@{/reportepro}" >Reporte de Stock</a><a
+							class="dropdown-item" th:href="@{/reportepe}" >Reporte Pedidos</a>
 					</div>
 					</span>
 				  </li>
