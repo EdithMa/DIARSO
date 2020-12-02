@@ -105,7 +105,7 @@ public class ProductosController {
 			return "agregarproducto";
 		} else {
 			if (!foto.isEmpty()) {
-				String ruta = "D://Temp//uploads";
+				String ruta = "D://uploads";
 
 				try {
 					byte[] bytes = foto.getBytes();
@@ -129,7 +129,7 @@ public class ProductosController {
 			RedirectAttributes flash) {
 
 		if (!foto.isEmpty()) {
-			String ruta = "D://Temp//uploads";
+			String ruta = "D://uploads";
 
 			try {
 				byte[] bytes = foto.getBytes();

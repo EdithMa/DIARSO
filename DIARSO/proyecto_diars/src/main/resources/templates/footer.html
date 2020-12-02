@@ -13,18 +13,35 @@
 <script th:src="@{/js/funciones.js}"></script>	
 </head>
 
-<footer>
+<footer th:fragment = "footer">
 	<div class="card text-center">
 	  <div class="card-header">
-	    Featured
+	    Bodega "Nelly"
 	  </div>
-	  <div class="card-body">
-	    <h5 class="card-title">Special title treatment</h5>
-	    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
+	  <div class="card-body">	    
+	    <div class="row mb-4">
+	    	<div class="col-md-4">
+	    		<a th:href="@{/catalogo}">
+					<img th:src="@{/img/logo-bodega.jpg}" width="100" height="100" alt="Logo Bodega" />	    		
+	    		</a>	    			    		
+	    	</div>
+	    
+	    	<div class="col-md-4">Redes sociales<br><br>
+	    		<a th:href="@{https://web.facebook.com/bodeganelly/?ref=py_c&_rdc=1&_rdr}">
+					<img th:src="@{/img/facebook.png}" width="30" height="30" alt="Icon-fb" />	    		
+	    		</a>
+	    		<a th:href="@{#}">
+					<img th:src="@{/img/instagram.png}" width="30" height="30" alt="Icon-insta" />	    		
+	    		</a>	    		
+	    	</div>
+	    	
+	    	<div class="col-md-4">Medios de pago<br>
+	    		<img th:src="@{/img/mercadopago.jpg}" width="150" height="75" alt="Logo pago" />
+	    	</div>
+	    </div>	    	  
 	  <div class="card-footer text-muted">
-	    2 days ago
+	    UPN todos los derechos reservados 2020
 	  </div>
+	</div>
 	</div>
 </footer>

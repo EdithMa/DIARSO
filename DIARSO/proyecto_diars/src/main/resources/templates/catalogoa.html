@@ -44,9 +44,7 @@
 					</ul>
 				</div>
 			</nav>
-	<div class="container">
-		<div>
-		</div>
+	<div class="container">		
 		<br>
 		<div class="row">
 			<div th:each="producto: ${productos}" th:if="${producto.estado == 1}">
@@ -72,6 +70,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
+	<footer th:replace = "footer :: footer"></footer>
 </body>
 </html>
