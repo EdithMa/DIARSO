@@ -179,6 +179,13 @@ public class ProductosController {
 		model.addAttribute("nombrepro", productoService.Buscarnombre(nombre));
 		return "nombre";
 	}
+	
+	@GetMapping("/actualizar")
+	public String buscarById(@RequestParam int id, Model model,
+			@ModelAttribute("producto") Producto producto) {
+		model.addAttribute("idpro", productoService.listarId(id));
+		return "reportep";
+	}
 
 	@GetMapping("/catalogon")
 	public String catalogopornombre(@RequestParam String nombre, Model model,

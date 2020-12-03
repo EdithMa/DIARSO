@@ -245,6 +245,9 @@ var diarsfy = {
 	vaciarCarrito: function vaciarCarrito(){
 		$.cookie('carritojs', undefined, { expires: 0.5 });
 	}, 
+	actualizarStock: function actualizarStock(){
+	
+	},
 	removerDelCarrito: function removerDelCarrito(_id, _callback){
 		var _this = this;
 		var _total = 0;
